@@ -23,29 +23,22 @@ function transform(arr) {
     let doubleNext = res.indexOf('--double-next');
     let doublePrev = res.indexOf('--double-prev');
 
-    if (res.includes('--discard-next')) {
-        if ((res[discardNext] + 1) && typeof res[discardNext + 1] === 'number') {
-            res.splice(discardNext + 1, 1);
-        }
+    if (res.includes('--discard-next') && (res[discardNext] + 1) && typeof res[discardNext + 1] === 'number') {
+        res.splice(discardNext + 1, 1);
     }
 
-    if (res.includes('--double-next')) {
-        if (res[doubleNext + 1] && typeof res[doubleNext + 1] === 'number') {
-            res[doubleNext] = res[doubleNext + 1];
-        }
+    if (res.includes('--double-next') && res[doubleNext + 1] && typeof res[doubleNext + 1] === 'number') {
+        res[doubleNext] = res[doubleNext + 1];
     }
 
-    if (res.includes('--discard-prev')) {
-        if (res[discardPrev - 1] && typeof res[discardPrev - 1] === 'number') {
-            res.splice(discardPrev - 1, 1);
-        }
+    if (res.includes('--discard-prev') && res[discardPrev - 1] && typeof res[discardPrev - 1] === 'number') {
+        res.splice(discardPrev - 1, 1);
     }
 
-    if (res.includes('--double-prev')) {
-        if (res[doublePrev - 1] && typeof res[doublePrev - 1] === 'number') {
+    if (res.includes('--double-prev') && res[doublePrev - 1] && typeof res[doublePrev - 1] === 'number') {
             res[doublePrev] = res[doublePrev - 1];
-        }
     }
+
     return res.filter(elem => elem !== '--discard-next' && elem !== '--discard-prev' && elem !== '--double-next' && elem !== '--double-prev');
 }
 
