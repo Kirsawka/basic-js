@@ -21,7 +21,14 @@ function encodeLine(str) {
             count = 1;
         }
     }
-    return arr.filter(elem => elem !== 1).join().replaceAll(',', '');
+    let newArr = arr.filter(elem => elem !== 1).join();
+    let res = '';
+    for (let i = 0; i < newArr.length; i++) {
+        if (newArr[i] !== ',') {
+            res += newArr[i];
+        }
+    }
+    return res;
 }
 
 module.exports = {
